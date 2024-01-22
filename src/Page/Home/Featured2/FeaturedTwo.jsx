@@ -12,7 +12,7 @@ const FeaturedTwo = () => {
             >
 
             </SectionTilte>
-            <div className="md:flex  justify-center items-center   bg-slate-700  mx-14 opacity-70">
+            <div className="md:flex rounded-lg justify-center items-center   bg-slate-700  mx-14 opacity-70">
                 <div >
                     <img  src={img} alt="" />
                 </div>
