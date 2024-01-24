@@ -1,12 +1,11 @@
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
+
+import Menu from '../Shared/Menu/Menu';
 
 const OurMenu = () => {
     return (
         <div>
-           <Helmet>
-            <title className='uppercase'>Our Menu</title>
-           </Helmet>
+            <Menu></Menu>
+           
         </div>
     );
 };
