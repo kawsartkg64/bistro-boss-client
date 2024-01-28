@@ -1,7 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const NavBar = () => {
+    const {user, logOut} = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const navLink = <>
 
@@ -9,10 +14,25 @@ const NavBar = () => {
         <li><NavLink to="/contactus">Contact Us</NavLink></li>
         <li><NavLink to='dashboard'>DASHBOARD</NavLink></li>
         <li><NavLink to="/ourmenu">Our Menu</NavLink></li>
-        <li><NavLink to='ourshop'>Our Shop</NavLink></li>
-       
+        <li><NavLink to='/ourshop'>Our Shop</NavLink></li>
+
 
     </>
+
+    const handleSignOut = e =>{
+        logOut()
+        .then(result =>{
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Log Out Success",
+                showConfirmButton: false,
+                timer: 1500
+              });
+        })
+        .catch()
+        navigate('/login')
+    }
 
     return (
         <div className="navbar fixed z-10 bg-black bg-opacity-30 text-white max-w-screen-xl mx-auto">
@@ -33,7 +53,10 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Log In</a>
+                {user ?  <Link to='/login'><button onClick={handleSignOut} className="btn btn-secondary">Log Out</button></Link>
+                :
+                  <Link to='/login'><button className="btn btn-secondary">Log In</button></Link>
+              }
             </div>
         </div>
     );

@@ -39,7 +39,7 @@ const Menu = () => {
             <MenuCategory items={soup}></MenuCategory>
             {/* dessert */}
             <Cover img={imgDessert} title={'Dessert'} subtitle={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}></Cover>
-            <MenuCategory items={soup}></MenuCategory>
+            <MenuCategory items={dessert}></MenuCategory>
         </div>
     );
 };
