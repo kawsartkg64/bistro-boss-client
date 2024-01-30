@@ -10,6 +10,7 @@ import DASHBOARD from "../Page/DASHBOARD/DASHBOARD";
 import OurShop from "../Page/OurShop/OurShop";
 import LogIn from "../Authentication/LogIn";
 import SignUp from "../Authentication/SignUp";
+import Cart from "../Page/DASHBOARD/Cart/Cart";
 
 
 export const router = createBrowserRouter([
@@ -30,10 +31,7 @@ export const router = createBrowserRouter([
           path:'/contactus',
           element:<ContactUs></ContactUs>
         },
-        {
-          path:'/dashboard',
-          element:<DASHBOARD></DASHBOARD>
-        },
+       
         {
           path:'ourshop',
           element:<OurShop></OurShop>
@@ -48,4 +46,14 @@ export const router = createBrowserRouter([
         }
       ]
     },
+    {
+      path:'dashboard',
+      element:<DASHBOARD></DASHBOARD>,
+      children:[
+        {
+          path:'cart',
+          element:<Cart></Cart>
+        }
+      ]
+    }
   ]);
