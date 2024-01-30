@@ -2,11 +2,14 @@ import { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import { FaShoppingCart } from "react-icons/fa";
+import useCart from "../../Hooks/useCart";
 
 
 const NavBar = () => {
-    const {user, logOut} = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
     const navigate = useNavigate()
+    const [cart] = useCart()
 
     const navLink = <>
 
@@ -15,22 +18,31 @@ const NavBar = () => {
         <li><NavLink to='dashboard'>DASHBOARD</NavLink></li>
         <li><NavLink to="/ourmenu">Our Menu</NavLink></li>
         <li><NavLink to='/ourshop'>Our Shop</NavLink></li>
+        <li>
+            <Link to='/'>
+                <button className="btn">
+                   <FaShoppingCart></FaShoppingCart>
+                    <div className="badge badge-secondary">+{cart.length}</div>
+                </button>
+            </Link>
+        </li>
+
 
 
     </>
 
-    const handleSignOut = e =>{
+    const handleSignOut = e => {
         logOut()
-        .then(result =>{
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Log Out Success",
-                showConfirmButton: false,
-                timer: 1500
-              });
-        })
-        .catch()
+            .then(result => {
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Log Out Success",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+            .catch()
         navigate('/login')
     }
 
@@ -53,10 +65,10 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {user ?  <Link to='/login'><button onClick={handleSignOut} className="btn btn-secondary">Log Out</button></Link>
-                :
-                  <Link to='/login'><button className="btn btn-secondary">Log In</button></Link>
-              }
+                {user ? <Link to='/login'><button onClick={handleSignOut} className="btn btn-secondary">Log Out</button></Link>
+                    :
+                    <Link to='/login'><button className="btn btn-secondary">Log In</button></Link>
+                }
             </div>
         </div>
     );
