@@ -4,10 +4,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import useAxiosPublic from '../Hooks/useAxiosPublic';
+import SocialAuth from './SocialAuth/SocialAuth';
 
 const SignUp = () => {
-    
-    const {createUser}= useContext(AuthContext)
+
+    const { createUser } = useContext(AuthContext)
+    const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
 
     const handleSignUp = event => {
@@ -20,30 +23,48 @@ const SignUp = () => {
         console.log(logUser);
 
         createUser(email, password)
-        .then(result =>{
-            const user =result.user
-            console.log(user)
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Sign Up Success",
-                showConfirmButton: false,
-                timer: 1500
-              });
-        })
-        .catch(error =>{
-            const errorMessage = error.message;
-            console.log(errorMessage)
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: 'email-already-in-use and check other issue',
-                showConfirmButton: false,
-                timer: 1500
-              });
-        })
-        navigate('/')
-       event.target.reset()
+            .then(result => {
+                const user = result.user
+                console.log(user)
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Sign Up Success",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                const useInfo = {
+                    name: name,
+                    email: email,
+                }
+                axiosPublic.post('users', useInfo)
+                    .then(res => {
+                        if (res.insertId) {
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: "Sign Up Success",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+
+                        }
+                        navigate('/')
+                    })
+            })
+            .catch(error => {
+                const errorMessage = error.message;
+                console.log(errorMessage)
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: 'email-already-in-use and check other issue',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
+
+        event.target.reset()
     }
     return (
         <div className="hero min-h-screen  w-full " style={{ backgroundImage: `url(${logBG})`, }} >
@@ -78,7 +99,11 @@ const SignUp = () => {
                             <button className="btn bg-[#D1A054]">Sign Up</button>
                         </div>
                         <p className='text-center font-medium'>Already registered? <Link className='text-[#D1A054] font-semibold' to='/login'>Go to log in</Link></p>
+                    
                     </form>
+                    <div className='mb-10 mx-auto'>
+                        <SocialAuth></SocialAuth>
+                    </div>
                 </div>
             </div>
         </div>

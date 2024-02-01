@@ -11,6 +11,7 @@ import OurShop from "../Page/OurShop/OurShop";
 import LogIn from "../Authentication/LogIn";
 import SignUp from "../Authentication/SignUp";
 import Cart from "../Page/DASHBOARD/Cart/Cart";
+import AllUser from "../Page/DASHBOARD/Alluser/AllUser";
 
 
 export const router = createBrowserRouter([
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
         {
           path:'cart',
           element:<Cart></Cart>
+        },
+        {
+          path:'alluser',
+          element:<AllUser></AllUser>
         }
       ]
     }

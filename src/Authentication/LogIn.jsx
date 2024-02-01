@@ -5,6 +5,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import SocialAuth from './SocialAuth/SocialAuth';
 
 const LogIn = () => {
 
@@ -96,8 +97,11 @@ const LogIn = () => {
                             <button disabled={disabled} className="btn bg-[#D1A054]">Login</button>
                         </div>
                         <p className='text-center font-medium'>New here? <Link className='text-[#D1A054] font-semibold' to='/signup'>Create a New Account</Link></p>
+                        
                     </form>
-
+                    <div className='mb-10 mx-auto'>
+                        <SocialAuth></SocialAuth>
+                    </div>
                 </div>
             </div>
         </div>
