@@ -2,10 +2,12 @@ import { Helmet } from 'react-helmet-async';
 import { FaAd, FaBook, FaCalendar, FaFileContract, FaHome, FaList, FaMoneyBill, FaShoppingCart, FaUser, FaUsers, FaUtensils } from 'react-icons/fa';
 import { NavLink, Outlet } from 'react-router-dom';
 import useCart from '../../Hooks/useCart';
+import useAdmin from '../../Hooks/useAdmin';
+
 
 const DASHBOARD = () => {
     const [cart] = useCart()
-    const isAdmin = true
+    const [isAdmin] = useAdmin()
 
     return (
         <div className='flex'>
@@ -51,7 +53,7 @@ const DASHBOARD = () => {
                                     <NavLink to="/dashboard/reservision"><FaCalendar></FaCalendar>Reservision</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/dashboard/carts"><FaShoppingCart></FaShoppingCart> My Cart :({cart.length})</NavLink>
+                                    <NavLink to="/dashboard/cart"><FaShoppingCart></FaShoppingCart> My Cart :({cart.length})</NavLink>
                                 </li>
                             </>
                     }

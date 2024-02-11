@@ -2,14 +2,15 @@ import Swal from "sweetalert2";
 import useCart from "../../../Hooks/useCart";
 import { MdDelete } from "react-icons/md";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 
 const Cart = () => {
     const [cart, refetch] = useCart()
-    const axiosSecure =useAxiosSecure()
+    const axiosSecure = useAxiosSecure()
     const totalPrice = cart.reduce((total, item) => total + item.price, 0)
-    
-    const handleDelete = id =>{
+
+    const handleDelete = id => {
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -18,23 +19,23 @@ const Cart = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
 
-            axiosSecure.delete(`/carts/${id}`)
-            .then(res =>{
-                if(res.data.deletedCount > 0){
-                    refetch()
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "Your file has been deleted.",
-                        icon: "success"
-                      });
-                }
-            })
+                axiosSecure.delete(`/carts/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            refetch()
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
 
             }
-          });
+        });
     }
 
     return (
@@ -42,7 +43,14 @@ const Cart = () => {
             <div className="flex justify-evenly">
                 <h1 className="text-3xl font-medium">Total Order:{cart.length}</h1>
                 <h1 className="text-3xl font-medium">Total Order:{totalPrice}</h1>
-                <button className="btn btn-warning">Pay</button>
+
+                {cart.length ?
+                    <Link to='/dashboard/payment'>
+                        <button className="btn btn-warning">Pay</button>
+                    </Link>
+                    :
+                    <button disabled className="btn  btn-warning">Pay</button>
+                }
             </div>
             <div className="overflow-x-auto mt-4">
                 <table className="table">
@@ -50,7 +58,7 @@ const Cart = () => {
                     <thead>
                         <tr className="bg-orange-300 text-black ">
                             <th>
-                               Serial
+                                Serial
                             </th>
                             <th>Image</th>
                             <th>Name</th>
@@ -62,7 +70,7 @@ const Cart = () => {
                         {
                             cart.map((item, index) => <tr key={item._id}>
                                 <th>
-                                   {index}
+                                    {index}
                                 </th>
                                 <td>
                                     <div className="flex items-center gap-3">
@@ -71,7 +79,7 @@ const Cart = () => {
                                                 <img src={item.image} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
-                                      
+
                                     </div>
                                 </td>
                                 <td>
@@ -79,13 +87,12 @@ const Cart = () => {
                                 </td>
                                 <td>${item.price}</td>
                                 <th>
-                                    <button 
-                                    onClick={()=>handleDelete(item._id)}
-                                    className="btn btn-ghost  text-3xl"><MdDelete className="text-3xl"></MdDelete></button>
+                                    <button
+                                        onClick={() => handleDelete(item._id)}
+                                        className="btn btn-ghost  text-3xl"><MdDelete className="text-3xl"></MdDelete></button>
                                 </th>
                             </tr>)
                         }
-                        {/* row 1 */}
 
 
                     </tbody>
