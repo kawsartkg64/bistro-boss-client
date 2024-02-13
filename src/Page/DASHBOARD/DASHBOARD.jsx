@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import { FaAd, FaBook, FaCalendar, FaFileContract, FaHome, FaList, FaMoneyBill, FaShoppingCart, FaUser, FaUsers, FaUtensils } from 'react-icons/fa';
+import { FaAd, FaBook, FaCalendar, FaClipboardList, FaFileContract, FaHome, FaList, FaMoneyBill, FaShoppingCart, FaUser, FaUsers, FaUtensils } from 'react-icons/fa';
 import { NavLink, Outlet } from 'react-router-dom';
 import useCart from '../../Hooks/useCart';
 import useAdmin from '../../Hooks/useAdmin';
@@ -47,7 +47,10 @@ const DASHBOARD = () => {
                                     <NavLink to="/dashboard/manageitem"><FaList></FaList>Manage Item</NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/dashboard/payment"><FaMoneyBill></FaMoneyBill>Payment History</NavLink>
+                                    <NavLink to="/dashboard/history"><FaMoneyBill></FaMoneyBill>Payment History</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/dashboard/paymenthistory"><FaClipboardList></FaClipboardList>Payment Real History</NavLink>
                                 </li>
                                 <li>
                                     <NavLink to="/dashboard/reservision"><FaCalendar></FaCalendar>Reservision</NavLink>

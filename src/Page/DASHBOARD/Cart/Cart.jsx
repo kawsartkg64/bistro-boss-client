@@ -70,7 +70,7 @@ const Cart = () => {
                         {
                             cart.map((item, index) => <tr key={item._id}>
                                 <th>
-                                    {index}
+                                    {index +1}
                                 </th>
                                 <td>
                                     <div className="flex items-center gap-3">

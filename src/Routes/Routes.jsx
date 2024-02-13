@@ -18,6 +18,7 @@ import AddItem from "../Page/DASHBOARD/AddItem/AddItem";
 import ManageItem from "../Page/DASHBOARD/ManageItem/ManageItem";
 import UpdateItem from "../Page/DASHBOARD/UpdateItem/UpdateItem";
 import Payment from "../Page/DASHBOARD/Payment/Payment";
+import PaymentHistory from "../Page/DASHBOARD/PaymentHistory/PaymentHistory";
 
 
 export const router = createBrowserRouter([
@@ -64,6 +65,10 @@ export const router = createBrowserRouter([
         {
           path:"payment",
           element:<Payment></Payment>,
+        },
+        {
+          path:"paymenthistory",
+          element:<PaymentHistory></PaymentHistory>
         },
         {
           path:'alluser',
