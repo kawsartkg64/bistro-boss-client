@@ -68,15 +68,17 @@ const CheckOut = () => {
                 console.log('transaction id', paymentIntent.id)
                 setTransactionId(paymentIntent.id)
                 const payment = {
-                    email: user.email,
+                    email: user?.email,
                     price: totalPrice,
                     date: new Date(),
                     transactionId: paymentIntent.id,
                     cartId: cart.map(item => item._id),
                     menuId: cart.map(item => item.menuId),
+                   
                     status:'pending',
 
                 }
+
                 const res = await axiosSecure.post('/payments', payment)
                 console.log('payment save', res)
                 refetch()

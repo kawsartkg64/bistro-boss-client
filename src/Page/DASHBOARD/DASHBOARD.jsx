@@ -37,15 +37,11 @@ const DASHBOARD = () => {
                             :
                             <>
                                 <li>
-                                    <NavLink to="/dashboard/adminHome"><FaHome></FaHome>Home Admin</NavLink>
+                                    <NavLink to="/dashboard/userHome"><FaHome></FaHome>Home User</NavLink>
                                 </li>
 
-                                <li>
-                                    <NavLink to="/dashboard/additem"><FaAd></FaAd>Add Item</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/dashboard/manageitem"><FaList></FaList>Manage Item</NavLink>
-                                </li>
+                               
+                               
                                 <li>
                                     <NavLink to="/dashboard/history"><FaMoneyBill></FaMoneyBill>Payment History</NavLink>
                                 </li>

@@ -38,17 +38,18 @@ const AuthProvider = ({ children }) => {
             if (currentUser) {
     
                 setUser(currentUser);
-                setLoading(false);
+            
                 axiosPublic.post("/jwt", { email: currentUser.email })
                     .then(res => {
                         if (res.data?.token) {
                             localStorage.setItem("access-token", res.data.token)
+                            setLoading(false);
                         }
                     })
             } else {
                 setUser(null);
+               localStorage.removeItem("access-token");
                 setLoading(true);
-                localStorage.removeItem("access-token");
             }
         })
     

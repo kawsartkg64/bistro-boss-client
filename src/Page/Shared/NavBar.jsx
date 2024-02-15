@@ -4,20 +4,34 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { FaShoppingCart } from "react-icons/fa";
 import useCart from "../../Hooks/useCart";
+import useAdmin from "../../Hooks/useAdmin";
 
 
 const NavBar = () => {
     const { user, logOut } = useContext(AuthContext)
+    const [isAdmin]= useAdmin()
     const navigate = useNavigate()
     const [cart] = useCart()
 
     const navLink = <>
 
         <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/contactus">Contact Us</NavLink></li>
-        <li><NavLink to='dashboard'>DASHBOARD</NavLink></li>
+        
         <li><NavLink to="/ourmenu">Our Menu</NavLink></li>
         <li><NavLink to='/ourshop'>Our Shop</NavLink></li>
+        {/* <li><NavLink to='dashboard'>DASHBOARD</NavLink></li> */}
+        
+        {
+            // user? 'true':'false'
+        }
+        {
+            user && isAdmin && <li><Link to="/dashboard/adminHome">Dashboard</Link></li>
+        }
+        {
+            user && !isAdmin && <li><Link to="/dashboard/userHome">Dashboard</Link></li>
+        }
+        <li><NavLink to="/contactus">Contact Us</NavLink></li>
+
         <li>
             <Link to='/dashboard/cart'>
                 <button className="btn">

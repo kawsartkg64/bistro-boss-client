@@ -16,6 +16,7 @@ const PaymentHistory = () => {
         }
 
     })
+   
     return (
         <div>
             <h2 className="text-2xl">Total Payments:{payments.length}</h2>
