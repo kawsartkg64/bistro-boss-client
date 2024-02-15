@@ -18,15 +18,15 @@ const PopularMenu = () => {
             >
 
             </SectionTilte>
-            <div className="grid grid-cols-2 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap:6 md:gap-10">
                 {
                     Popular.map(item => <MenuItem
                         key={item._id} item={item}
                     ></MenuItem>)
                 }
             </div>
-            <div className='my-10 text-center'>
-                <button className='btn btn-outline border-0 border-b-4'>View full Menu</button>
+            <div className='my:-6 md:my-10 text-center'>
+                <button className='btn btn-outline border-0 border-b-4 mb-4'>View full Menu</button>
             </div>
         </div>
     );
