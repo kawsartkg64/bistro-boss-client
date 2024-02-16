@@ -13,7 +13,7 @@ import SectionTilte from '../../Shared/sectionTitle/SectionTilte';
 
 const Category = () => {
     return (
-        <section>
+        <section className='px-4 md:px-8'>
             <SectionTilte
             subHeading={'From 11:00am to 10:00pm'}
             heading={'ORDER ONLINE'}
@@ -31,23 +31,23 @@ const Category = () => {
             >
                 <SwiperSlide>
                     <img src={slide1} alt="" />
-                    <h3 className='text-4xl uppercase text-center text-white -mt-12'>Salads</h3>
+                    <h3 className='text-2xl md:text-4xl uppercase text-center text-white -mt-12'>Salads</h3>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src={slide2} alt="" />
-                    <h3 className='text-4xl uppercase text-center text-white -mt-12'>Pizza</h3>
+                    <h3 className='text-3xl md:text-4xl uppercase text-center text-white -mt-12'>Pizza</h3>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src={slide3} alt="" />
-                    <h3 className='text-4xl uppercase text-center text-white -mt-12'>Soups</h3>
+                    <h3 className='text-2xl md:text-4xl uppercase text-center text-white -mt-12'>Soups</h3>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src={slide4} alt="" />
-                    <h3 className='text-4xl uppercase text-center text-white -mt-12'>desserts</h3>
+                    <h3 className='text-2xl md:text-4xl uppercase text-center text-white -mt-12'>desserts</h3>
                 </SwiperSlide>
                 <SwiperSlide>
                     <img src={slide5} alt="" />
-                    <h3 className='text-4xl uppercase text-center text-white -mt-12'>Salads</h3>
+                    <h3 className='text-2xl md:text-4xl uppercase text-center text-white -mt-12'>Salads</h3>
                 </SwiperSlide>
 
             </Swiper>

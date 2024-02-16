@@ -23,7 +23,7 @@ const OurShop = () => {
             </Helmet>
             <Cover img={shopCover} title={"OUR SHOP"} subtitle={'Would you like to try a dish?'}></Cover>
             <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-                <TabList className="jy uppercase font-medium">
+                <TabList className="mb-2 overflow-x-scroll uppercase font-medium">
                     <Tab>Salad</Tab>
                     <Tab>Pizza</Tab>
                     <Tab>Soups</Tab>
@@ -32,35 +32,35 @@ const OurShop = () => {
                 </TabList>
 
                 <TabPanel>
-                   <div className='grid md:grid-cols-3 gap-4'>
+                   <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 '>
                    {
                         salad.map(item => <CardShop key={item._id} item={item}></CardShop>)
                     }
                    </div>
                 </TabPanel>
                 <TabPanel>
-                   <div className='grid md:grid-cols-3 gap-4'>
+                   <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 '>
                    {
                         pizza.map(item => <CardShop key={item._id} item={item}></CardShop>)
                     }
                    </div>
                 </TabPanel>
                 <TabPanel>
-                    <div className='grid grid-cols-3 gap-4'>
+                    <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 '>
                     {
                         soups.map(item => <CardShop key={item._id} item={item}></CardShop>)
                     }
                     </div>
                 </TabPanel>
                 <TabPanel>
-                   <div className='grid md:grid-cols-3'>
+                   <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 '>
                    {
                         dessert.map(item => <CardShop key={item._id} item={item}></CardShop>)
                     }
                    </div>
                 </TabPanel>
                 <TabPanel>
-                   <div className='grid md:grid-cols-3 gap-4'>
+                   <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 '>
                    {
                         drink.map(item => <CardShop key={item._id} item={item}></CardShop>)
                     }

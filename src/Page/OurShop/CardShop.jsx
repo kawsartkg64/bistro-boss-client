@@ -54,7 +54,7 @@ const CardShop = ({item}) => {
       }
     }
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="w-full card md:w-96 mx-auto bg-base-100 shadow-xl">
         <figure><img src={image} alt="" /></figure>
         <div className="card-body">
           <h2 className="card-title">{name}</h2>
